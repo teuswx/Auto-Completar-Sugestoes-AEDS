@@ -1,70 +1,61 @@
 > Status Development: finished :heavy_check_mark:
 
-# Top K elementos
-
+# Sistema de Sujestão de Palavras
 ## Objetivo 🎯
-
-O desafio consiste em identificar os k itens mais valiosos contidos nos arquivos da pasta "dataset". Para isso, adota-se uma estratégia que envolve o uso de tabelas de hash para registrar a frequência de todos os itens e uma estrutura de heap para gerenciar uma lista dos k itens de maior valor. A abordagem de tabelas de hash permite contabilizar eficientemente a frequência dos itens, otimizando as operações de busca. Enquanto isso, a estrutura de heap, seja min heap ou max heap, assegura a constante manutenção dos k itens mais valiosos, possibilitando a substituição de elementos menos valiosos por aqueles de maior valor à medida que são encontrados. 
+Foi proposto pelo professor [Michel Pires Da Silva](https://www.linkedin.com/in/michelpiressilva/?originalSubdomain=br) na disciplina de Algoritmos e Estrutura de Dados, um trabalho no qual o objetivo era desenvolver uma ferramenta ou programa que, tendo como entrada uma palavra específica chamada "busca" e um texto, seja capaz de gerar sugestões para a próxima palavra que provavelmente seguiria a palavra de "busca". Essas sugestões serão derivadas de uma análise das palavras mais frequentes presentes no texto. Para alcançar esse objetivo, construiremos sobre o trabalho prévio realizado [Top K Elementos](https://github.com/teuswx/Top-K-Elementos-Aeds)  e aprimoraremos a funcionalidade existente.
 
 ## Leitura de arquivos :file_folder:
- Os arquivos devem estar na pasta "dataset" e possuir a seguinte estrutura "inputN.txt", onde N é o índice do arquivo. Para realizar a leitura dos arquivos, a váriavel N deve ser definida com a quantidade necessária de arquivos a serem lidos na classe "algoritmo.hpp". no exemplo a seguir, são lidos 2 arquivos:
+Os arquivos devem estar na pasta "dataset" e possuir a seguinte estrutura "inputN.txt", onde N é o índice do arquivo. Para realizar a leitura dos arquivos, a váriavel N deve ser definida com a quantidade necessária de arquivos a serem lidos na classe "algoritmo.hpp". no exemplo a seguir, são lidos 6 arquivos:
 
-![Screenshot 2023-08-22 121837](https://github.com/teuswx/Top-K-Elementos-Aeds/assets/102326098/6f94cad2-ae2c-4972-ae58-3c09e65eff0f)
+![image](https://github.com/teuswx/Auto-Completar-Sugestoes-AEDS/assets/102326098/7adea603-32b0-466b-b1b0-fa8aead16475)
 
+Além disso, existem os seguintes arquivos:
 
+![image](https://github.com/teuswx/Auto-Completar-Sugestoes-AEDS/assets/102326098/35c6eade-739c-4e0d-a0b3-77036cd85276)
 
- trecho exemplo de funcionamento:
+**pesquisa.txt:** seu conteúdo deve ser representado pelas 
+palavras a serem pesquisadas, e deve estar no seguinte formato:
 
- <pre>
-    <code>
-        K = 2;
-        while (k <= N)
-    {
-        ifstream arquivo_entrada("dataset/input" + to_string(k) + ".txt");
-        k++;
-    }
-        
-    </code> 
-</pre>
+![image](https://github.com/teuswx/Auto-Completar-Sugestoes-AEDS/assets/102326098/237a84e4-9c8f-48c1-ada6-a54a41666251)
+
+**pontuação.txt:** seu conteúdo deve ser representado pelas pontuações a serem retiradas no texto, e deve estar no seguinte formato:
+
+![image](https://github.com/teuswx/Auto-Completar-Sugestoes-AEDS/assets/102326098/a0f6d778-36b9-48d9-814a-0682f4b01b89)
+
+**stopwords.txt:** seu conteúdo deve ser representado pelas stopwords a serem removidas no texto, e deve conter o seguinte formato: 
+
+![image](https://github.com/teuswx/Auto-Completar-Sugestoes-AEDS/assets/102326098/8422278f-2a27-4802-b36b-9211074df62c)
+
+Ao final do processo, o programa produzirá um arquivo chamado "output.txt". Esse arquivo conterá informações essenciais, incluindo a identificação do "inputN.txt" que foi processado, a palavra-alvo pesquisada nos N textos, sua frequência de ocorrência, bem como as palavras mais relevantes identificadas, juntamente com suas respectivas frequências e valores. Essas informações estarão organizadas em pré-ordem em relação a cada estrutura de dados empregada no projeto.
+
 ## Lógica :bulb:
+Após a leitura de arquivos realizada pelo método "Algoritmo::lerArquivo()" o sistema está pronto para iniciar o processo de busca das palavras-chave indicadas e suas respetivas sugestões.
 
-Primeiramente o programa inicia o método "lerArquivo" da classe "Algoritmo.cpp" onde os arquivos "DomCasmurro.txt" e "Semana_Machado_Assis.txt" são lidos. Para realizar a padronização das palavras, utilizamos as seguintes funções "trasnform" e "tolower"da biblioteca padrão do c++ "iostream", "string" e "algorithm".
+Inicialmente, o programa abre o primeiro arquivo de entrada disponíveis para pesquisa. Caso uma palavra-chave não esteja presente no arquivo em específico, o algoritmo não executa os passos posteirores e pula para o próximo arquivo.
 
-* **Transform**: está definida na biblioteca "algorithm" que é utilizada para aplicar uma transformação em cada elemento de uma sequência.
-* **Tolower**: está definida na biblioteca "cctype" e é utilizada para converter cada caractere para minusculo
+Contudo, quando o sistema encontra uma palavra de pesquisa em um arquivo de entrada, prossegue com a etapa de busca das K palavras mais relevantes dentro do contexto. As palavras são fragmentadas em unidades individuais e, em seguida, armazenadas em um MinHeap, uma estrutura de dados especializada. Isso é essencial para o registro e cálculo das frequências de ocorrência de cada palavra no texto analisado.
 
-A remoção da pontuação foi feita da seguinte forma, o código lê um arquivo contendo todas as pontuações presentes no texto realizando a comparação de caractere por caractere apenas concatenado os caracteres que não são sinais de pontuação.
+Após a identificação das K palavras mais relevantes, estas são catalogadas em três diferentes tipos de árvores binárias. Por fim, concluído o processo de busca, análise e armazenamento de sugestões de palavras, o sistema cria um arquivo de saída denominado "output.txt".
 
-Para realizar a contrução da hash utilizou-se a classe implementada "unordered_map" que é uma estrutura associativa que armazena elementos em pares chave-valor, onde cada chave é unica.  Explicando melhor como funciona a colisão dos elementos em uma hash, ela ocorre quando duas ou mais chaves tem o mesmo valor de hash. No "unordered_map" ela é implementada utilizando uma técnica conhecida como "open addressing"(endereçamento aberto) ou "chaining" (encadeamento).
 
-* **Open Addressing(Endereçamento Aberto)**: Nessa abordagem, quando ocorre uma colisão (ou seja, quando a função de hash gera um índice que já está ocupado), o unordered_map tenta encontrar o próximo espaço vazio (slot) na tabela hash para inserir o elemento. Existem diferentes métodos de resolução de colisões no endereçamento aberto, como linear probing (sondagem linear), quadratic probing (sondagem quadrática) e double hashing (hashing duplo).
-    * **Linear Probing**: Quando ocorre uma colisão, o sistema tenta inserir o elemento no próximo slot vazio na tabela.
-    * **Quadratic Probing**: O sistema tenta encontrar um novo slot vazio usando uma sequência quadrática de tentativas.
-    * **Double Hashing**: Usa uma segunda função de hash para calcular o passo a ser tomado em caso de colisão.
 
-* **Chaining(Encadeamento)**: Nessa abordagem, cada slot da tabela hash contém uma lista (ou outra estrutura de dados) que mantém todos os elementos que têm o mesmo valor de hash. Quando ocorre uma colisão, o novo elemento é simplesmente adicionado à lista correspondente. Isso significa que diferentes elementos com o mesmo valor de hash são armazenados em uma estrutura de dados encadeada.
-
-    A escolha entre essas abordagens é geralmente feita pela implementação do compilador/C++ standard library, e muitas vezes você não precisa se preocupar com isso diretamente. O C++ oferece uma abstração sólida para a utilização do unordered_map, então você pode simplesmente tratar a estrutura de dados como uma coleção de pares chave-valor sem se preocupar com os detalhes internos de resolução de colisões.
-
- Depois o programa realiza a inserção de cada elemento string no método "insert" da classe "heap.cpp"já padronizado com as letras minusculas e sem caracteres considerados pontuação. Os elementos foram inseridos em uma hash utilizando a biblioteca "unordered_map" na variável "map" permitindo o armazenamento dos memos utilizando pares chave-valor, onde cada chave é única e associada a um valor, aproveitando também para realizar a contagem da quantidade de elementos repetidos.
-
- Para dar inicio a construção da min heap utiliza-se o método "iniciandoHeap" que percorre o mapa e insere pares (contagem, string) na min heap. Após inserção, o par correspondente é removido do map. Esse processo é repetido até que 20 pares tenham sido inseridos na heap, ou até que o mapa esteja vazio.
- 
- O método "comparaTopItens" compara as strings contidas no map com as contagens das strings no topo da min heap. Se a contagem no map for maior do que a contagem no topo da heap, o topo da heap é removido e o novo par é inserido na heap.
-
-O método "printHeap" imprime os elementos da min heap. Ele cria uma cópia temporária da heap chamada tempHeap e, em seguida, itera sobre essa heap temporária para imprimir os pares na ordem crescente das contagens. Cada par é impresso com seu índice, a string e o número de ocorrências.
+<ul>
+<li> <strong>Árvore Binária:</strong> Uma árvore binária é uma estrutura de dados hierárquica em que cada nó tem, no máximo, dois filhos: um filho esquerdo e um filho direito. As árvores binárias são amplamente usadas na ciência da computação para organizar dados de forma eficiente e hierárquica, permitindo operações de busca, inserção e exclusão eficazes. Elas são a base de estruturas mais avançadas, como árvores de busca binária (BST) e árvores AVL, que otimizam a busca e a inserção de dados em ordem específica e mantêm o equilíbrio da árvore para um desempenho ideal.<br><br>
+<li> <strong>Árvore Binária:</strong> é uma estrutura de dados em forma de árvore binária balanceada, na qual a diferença de altura entre as subárvores esquerda e direita de qualquer nó (conhecida como fator de balanceamento) é mantida em no máximo 1. Essa característica de balanceamento garante que as operações de busca, inserção e exclusão tenham um desempenho eficiente, com tempo médio logarítmico. As árvores AVL são amplamente utilizadas para implementar estruturas de dados de busca eficientes, sendo uma extensão das árvores binárias com equilíbrio automático, proporcionando alto desempenho em diversas aplicações computacionais.<br><br>
+<li> <strong>Árvore de Huffman:</strong> é uma estrutura de dados usada para codificar dados de forma eficiente, principalmente em compressão de dados. Ela é construída a partir de uma lista de símbolos e suas frequências, atribuindo códigos binários mais curtos aos símbolos mais frequentes. A Árvore de Huffman é uma árvore binária onde os símbolos são armazenados nas folhas e os caminhos da raiz até as folhas representam os códigos de compressão. Isso garante que os símbolos mais frequentes tenham códigos mais curtos, economizando espaço.
+</ul>
 
 ## Exemplo de execução :hammer:
-![aeds](https://github.com/teuswx/Top-K-Elementos-Aeds/assets/102326098/c8db19cd-e9dc-4aa7-9d5b-a6079610a919)
 
+![image](https://github.com/teuswx/Auto-Completar-Sugestoes-AEDS/assets/102326098/3bda4c48-c790-4fc8-ae1d-ba2cc15f297e)
 
 ## Conclusão :ballot_box_with_check:
 
-Durante o desenvolvimento do projeto foi possível fazer o uso de estruturas de dados como a hash que serviu para contar a frequência dos itens e a heap auxiliando na na manutenção de uma lista dos k itens de maior valor.
-
-Ao concluir o projeto, foi possível analisar e compreender a estrutura heap e como ela gerencia um conjunto de elementos, geralmente com a finalidade de manter o elemento de maior ou menor prioridade no topo da estrutura.
+Durante o desenvolvimento do projeto, tivemos a oportunidade de explorar e aplicar estruturas de dados avançadas, como as árvores binárias, que desempenharam um papel fundamental no armazenamento e na análise dos principais K itens. À medida que o algoritmo foi concluído, uma compreensão mais profunda da estrutura das árvores binárias surgiu, revelando como elas eficientemente gerenciam conjuntos de elementos. A principal finalidade de uma árvore binária é permitir buscas rápidas e eficazes de dados, uma funcionalidade que se mostrou essencial ao longo do projeto.
 
 Essa experiência proporcionou um aprendizado valioso sobre técnicas de otimização de código, que podem ser aplicadas em projetos futuros.
+
+
 ## Compilação e Execução :electric_plug:
 
 O programa foi feito de acordo com a proposta e possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Portanto, temos as seguintes diretrizes de execução:
