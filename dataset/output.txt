@@ -1,0 +1,88 @@
+----------------------------------------------
+
+INPUT 1
+Palavra pesquisada: filosofia
+Frequencia da palavra pesquisada: 19
+Palavras mais relevates: [realidade, virtual, assim, maneira, pode, quanto, wittgenstein, vista, imanente, sentido, segundo, sobre, pensamento, sistema, priori, modo, condição, mundo, sujeito, teoria, ]
+Pre Ordem
+Binaria: 
+[frequência: 176, valor: teoria ] [frequência: 158, valor: sujeito ] [frequência: 134, valor: condição mundo ] [frequência: 129, valor: modo ] [frequência: 125, valor: priori ] [frequência: 115, valor: pensamento sistema ] [frequência: 114, valor: segundo sobre ] [frequência: 110, valor: sentido ] [frequência: 104, valor: imanente ] [frequência: 96, valor: vista ] [frequência: 95, valor: maneira pode quanto wittgenstein ] [frequência: 94, valor: assim ] [frequência: 93, valor: virtual ] [frequência: 91, valor: realidade ] 
+Árvore de huffman: 
+[frequência: 104, valor: imanente] [frequência: 110, valor: sentido] [frequência: 114, valor: sobre] [frequência: 114, valor: segundo] [frequência: 115, valor: sistema] [frequência: 115, valor: pensamento] [frequência: 125, valor: priori] [frequência: 129, valor: modo] [frequência: 134, valor: condição] [frequência: 134, valor: mundo] [frequência: 158, valor: sujeito] [frequência: 176, valor: teoria] [frequência: 91, valor: realidade] [frequência: 93, valor: virtual] [frequência: 94, valor: assim] [frequência: 95, valor: maneira] [frequência: 95, valor: quanto] [frequência: 95, valor: wittgenstein] [frequência: 95, valor: pode] [frequência: 96, valor: vista] 
+AVL: 
+[frequência: 91 valor: realidade ] [frequência: 94 valor: assim ] [frequência: 93 valor: virtual ] [frequência: 96 valor: vista ] [frequência: 110 valor: sentido ] [frequência: 104 valor: imanente ] [frequência: 95 valor: maneira pode quanto wittgenstein ] [frequência: 115 valor: pensamento sistema ] [frequência: 129 valor: modo ] [frequência: 125 valor: priori ] [frequência: 176 valor: teoria ] [frequência: 158 valor: sujeito ] [frequência: 134 valor: condição mundo ] [frequência: 114 valor: segundo sobre ] 
+
+INPUT 2
+Palavra pesquisada: filosofia
+Frequencia da palavra pesquisada: 19
+Palavras mais relevates: [infinito, respeito, maneira, possível, vista, wittgenstein, pode, princípio, imanente, sentido, segundo, sobre, pensamento, sistema, modo, condição, mundo, priori, sujeito, teoria, ]
+Pre Ordem
+Binaria: 
+[frequência: 192, valor: teoria ] [frequência: 154, valor: sujeito ] [frequência: 144, valor: mundo priori ] [frequência: 133, valor: condição ] [frequência: 129, valor: modo ] [frequência: 119, valor: sistema ] [frequência: 115, valor: pensamento ] [frequência: 114, valor: segundo sobre ] [frequência: 111, valor: sentido ] [frequência: 109, valor: imanente ] [frequência: 97, valor: princípio ] [frequência: 96, valor: pode ] [frequência: 95, valor: maneira possível vista wittgenstein ] [frequência: 90, valor: respeito ] [frequência: 89, valor: infinito ] 
+Árvore de huffman: 
+[frequência: 109, valor: imanente] [frequência: 111, valor: sentido] [frequência: 114, valor: sobre] [frequência: 114, valor: segundo] [frequência: 115, valor: pensamento] [frequência: 119, valor: sistema] [frequência: 129, valor: modo] [frequência: 133, valor: condição] [frequência: 144, valor: mundo] [frequência: 144, valor: priori] [frequência: 154, valor: sujeito] [frequência: 89, valor: infinito] [frequência: 90, valor: respeito] [frequência: 95, valor: possível] [frequência: 95, valor: vista] [frequência: 95, valor: maneira] [frequência: 95, valor: wittgenstein] [frequência: 192, valor: teoria] [frequência: 96, valor: pode] [frequência: 97, valor: princípio] 
+AVL: 
+[frequência: 89 valor: infinito ] [frequência: 95 valor: maneira possível vista wittgenstein ] [frequência: 90 valor: respeito ] [frequência: 97 valor: princípio ] [frequência: 111 valor: sentido ] [frequência: 109 valor: imanente ] [frequência: 96 valor: pode ] [frequência: 115 valor: pensamento ] [frequência: 129 valor: modo ] [frequência: 119 valor: sistema ] [frequência: 144 valor: mundo priori ] [frequência: 192 valor: teoria ] [frequência: 154 valor: sujeito ] [frequência: 133 valor: condição ] [frequência: 114 valor: segundo sobre ] 
+
+INPUT 3
+Palavra pesquisada: filosofia
+Frequencia da palavra pesquisada: 0
+
+
+INPUT 4
+Palavra pesquisada: filosofia
+Frequencia da palavra pesquisada: 0
+
+
+INPUT 5
+Palavra pesquisada: filosofia
+Frequencia da palavra pesquisada: 0
+
+
+INPUT 6
+Palavra pesquisada: filosofia
+Frequencia da palavra pesquisada: 0
+----------------------------------------------
+
+INPUT 1
+Palavra pesquisada: ti
+Frequencia da palavra pesquisada: 0
+
+
+INPUT 2
+Palavra pesquisada: ti
+Frequencia da palavra pesquisada: 0
+
+
+INPUT 3
+Palavra pesquisada: ti
+Frequencia da palavra pesquisada: 0
+
+
+INPUT 4
+Palavra pesquisada: ti
+Frequencia da palavra pesquisada: 201
+Palavras mais relevates: [problemas, sistemas, software, utilizados, vez, assim, hardware, tempo, aumento, desenvolvimento, impacto, melhor, sistema, dados, informações, novas, ti, implantação, segurança, utilização, ]
+Pre Ordem
+Binaria: 
+[frequência: 399, valor: utilização ] [frequência: 268, valor: segurança ] [frequência: 266, valor: implantação ] [frequência: 201, valor: dados informações novas ti ] [frequência: 200, valor: aumento desenvolvimento impacto melhor sistema ] [frequência: 199, valor: assim hardware tempo ] [frequência: 134, valor: problemas sistemas software utilizados vez ] 
+Árvore de huffman: 
+[frequência: 200, valor: melhor] [frequência: 200, valor: sistema] [frequência: 200, valor: impacto] [frequência: 200, valor: desenvolvimento] [frequência: 200, valor: aumento] [frequência: 201, valor: ti] [frequência: 201, valor: informações] [frequência: 201, valor: novas] [frequência: 201, valor: dados] [frequência: 266, valor: implantação] [frequência: 268, valor: segurança] [frequência: 134, valor: problemas] [frequência: 134, valor: sistemas] [frequência: 134, valor: utilizados] [frequência: 134, valor: vez] [frequência: 134, valor: software] [frequência: 199, valor: assim] [frequência: 199, valor: tempo] [frequência: 199, valor: hardware] [frequência: 399, valor: utilização] 
+AVL: 
+[frequência: 134 valor: problemas sistemas software utilizados vez ] [frequência: 200 valor: aumento desenvolvimento impacto melhor sistema ] [frequência: 199 valor: assim hardware tempo ] [frequência: 266 valor: implantação ] [frequência: 399 valor: utilização ] [frequência: 268 valor: segurança ] [frequência: 201 valor: dados informações novas ti ] 
+
+INPUT 5
+Palavra pesquisada: ti
+Frequencia da palavra pesquisada: 201
+Palavras mais relevates: [rede, redes, sentido, serviços, sobre, desenvolvimento, impacto, novas, sistema, tempo, hardware, informações, assim, aumento, dados, melhor, ti, implantação, segurança, utilização, ]
+Pre Ordem
+Binaria: 
+[frequência: 400, valor: utilização ] [frequência: 268, valor: segurança ] [frequência: 267, valor: implantação ] [frequência: 201, valor: assim aumento dados melhor ti ] [frequência: 200, valor: hardware informações ] [frequência: 199, valor: desenvolvimento impacto novas sistema tempo ] [frequência: 134, valor: rede redes sentido serviços sobre ] 
+Árvore de huffman: 
+[frequência: 400, valor: utilização] [frequência: 200, valor: informações] [frequência: 200, valor: hardware] [frequência: 201, valor: melhor] [frequência: 201, valor: assim] [frequência: 201, valor: dados] [frequência: 201, valor: ti] [frequência: 201, valor: aumento] [frequência: 267, valor: implantação] [frequência: 268, valor: segurança] [frequência: 134, valor: rede] [frequência: 134, valor: redes] [frequência: 134, valor: serviços] [frequência: 134, valor: sobre] [frequência: 134, valor: sentido] [frequência: 199, valor: desenvolvimento] [frequência: 199, valor: novas] [frequência: 199, valor: sistema] [frequência: 199, valor: tempo] [frequência: 199, valor: impacto] 
+AVL: 
+[frequência: 134 valor: rede redes sentido serviços sobre ] [frequência: 200 valor: hardware informações ] [frequência: 199 valor: desenvolvimento impacto novas sistema tempo ] [frequência: 267 valor: implantação ] [frequência: 400 valor: utilização ] [frequência: 268 valor: segurança ] [frequência: 201 valor: assim aumento dados melhor ti ] 
+
+INPUT 6
+Palavra pesquisada: ti
+Frequencia da palavra pesquisada: 0
